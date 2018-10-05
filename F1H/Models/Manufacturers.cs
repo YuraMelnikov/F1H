@@ -3,20 +3,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace F1H.Models
 {
-    public class Engines
+    public class Manufacturers
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdManufacturers { get; set; }
+        public int IdCountry { get; set; }
         [Required]
         public int IdImagesGp { get; set; }
         [Required]
         public string Name { get; set; }
 
-        [ForeignKey("IdManufacturers")]
-        public  Manufacturers Manufacturer { get; set; }
+        [ForeignKey("IdCountry")]
+        public Country Countr { get; set; }
         [ForeignKey("IdImagesGp")]
-        public  ImagesGP Image { get; set; }
+        public ImagesGP Image { get; set; }
     }
 }

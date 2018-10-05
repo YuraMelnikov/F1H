@@ -1,10 +1,20 @@
-﻿namespace F1H.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace F1H.Models
 {
     public class Country
     {
-        public int Id { get; }
-        public string NameEn { get; }
-        public string NameRus { get; }
-        public int IdImagesGpFlag { get; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public string NameEn { get; set; }
+        [Required]
+        public string NameRus { get; set; }
+        [Required]
+        public int IdImagesGpFlag { get; set; }
+
+        [ForeignKey("IdImagesGpFlag")]
+        public  ImagesGPFlag Image { get; set; }
     }
 }

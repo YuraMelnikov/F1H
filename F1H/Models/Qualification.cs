@@ -3,20 +3,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace F1H.Models
 {
-    public class FastLap
+    public class Qualification
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdGpResult { get; set; }
+        public int IdParticipants { get; set; }
         [Required]
-        public int Lap { get; set; }
+        public string Num { get; set; }
+        [Required]
+        public int Position { get; set; }
         [Required]
         public string Time { get; set; }
         [Required]
         public float AverageSpeed { get; set; }
 
-        [ForeignKey("IdGpResult")]
-        public  GPResult Result { get; set; }
+        [ForeignKey("IdParticipants")]
+        public  Participants Participant { get; set; }
     }
 }

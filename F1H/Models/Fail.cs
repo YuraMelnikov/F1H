@@ -1,9 +1,20 @@
-﻿namespace F1H.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace F1H.Models
 {
     public class Fail
     {
-        public int Id { get; }
-        public int IdGpResult { get; }
-        public int IdTypeFail { get; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public int IdGpResult { get; set; }
+        [Required]
+        public int IdTypeFail { get; set; }
+
+        [ForeignKey("IdGpResult")]
+        public  GPResult Result { get; set; }
+        [ForeignKey("IdTypeFail")]
+        public  TypeFail TFail { get; set; }
     }
 }

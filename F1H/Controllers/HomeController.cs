@@ -9,7 +9,8 @@ namespace F1H.Controllers
 
         public IActionResult Index()
         {
-            return View(repository.Countries);
+            return View();
+            //return View(repository.Countries);
         }
     }
 }
