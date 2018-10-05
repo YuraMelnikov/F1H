@@ -5,47 +5,64 @@
     <meta name="viewport" content="width=device-width" />
     <title>F1H</title>
     <link rel="stylesheet" href="~/vendor.min.css" />
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: darkslategray;
+            color: white;
+            text-align: center;
+        }
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
-    <body>
+<body>
     <script src="~/vendor.min.js"></script>
-    
-    
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-        <a class="navbar-brand" href="#">Navbar</a>
-        
-
+        <a class="navbar-brand" href="#">
+            <img src="~/Content/Logo/logo.jpg" width="50" alt="" />
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Главная<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Чемпионаты</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Участники</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Пилоты</a>
+                        <a class="dropdown-item" href="#">Команды</a>
+                        <a class="dropdown-item" href="#">Шасси</a>
+                        <a class="dropdown-item" href="#">Двигатели</a>
+                        <a class="dropdown-item" href="#">Шины</a>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Статьи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Статистика</a>
                 </li>
             </ul>
         </div>
     </nav>
-    
-    
-    
-
     <div>
         @RenderBody()
     </div>
+
+    <footer role="contentinfo" class="footer">
+        <span class="text-muted">© Юрий Мельников, 2018. Все права защищены.</span>
+    </footer>
 </body>
 </html>
