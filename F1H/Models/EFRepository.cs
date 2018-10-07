@@ -12,7 +12,7 @@ namespace F1H.Models
         {
             context = ctx;
         }
- 
+
         public IQueryable<Chassi> Chassis => context.Chassis;
         public IQueryable<Country> Country => context.Country;
         public IQueryable<DescriptionResult> DescriptionResults => context.DescriptionResults;
