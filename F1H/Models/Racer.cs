@@ -5,7 +5,7 @@ using System;
 
 namespace F1H.Models
 {
-    public class Racers
+    public class Racer
     {
         [Key]
         public int Id { get; set; }
@@ -31,6 +31,6 @@ namespace F1H.Models
         [ForeignKey("IdCountry")]
         public  Country Countr { get; set; }
         [ForeignKey("IndexPhoto")]
-        public  ImagesGPRacers Image { get; set; }
+        public  ImageGPRacers Image { get; set; }
     }
 }

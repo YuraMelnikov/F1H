@@ -8,23 +8,23 @@ namespace F1H.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdTracks { get; set; }
+        public int IdTrack { get; set; }
         [Required]
-        public int IdSeasons { get; set; }
+        public int IdSeason { get; set; }
         [Required]
         public int IdImagesGpConfiguration { get; set; }
         [Required]
         public int Length { get; set; }
         [Required]
-        public int IdImagesGp { get; set; }
+        public int IdImageGp { get; set; }
 
-        [ForeignKey("IdImagesGp")]
-        public ImagesGP ImagesGp { get; set; }
-        [ForeignKey("IdTracks")]
-        public  Tracks Track { get; set; }
-        [ForeignKey("IdSeasons")]
-        public  Seasons Season { get; set; }
+        [ForeignKey("IdImageGp")]
+        public ImageGP ImageGp { get; set; }
+        [ForeignKey("IdTrack")]
+        public  Track Track { get; set; }
+        [ForeignKey("IdSeason")]
+        public  Season Season { get; set; }
         [ForeignKey("IdImagesGpConfiguration")]
-        public  ImagesGPConfiguration ImagesGpConfiguratione { get; set; }
+        public  ImageGPConfiguration ImagesGpConfiguratione { get; set; }
     }
 }

@@ -10,13 +10,13 @@ namespace F1H.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdTeams { get; set; }
+        public int IdTeam { get; set; }
         [Required]
         public DateTime Time { get; set; }
         [Required]
         public string FullName { get; set; }
 
-        [ForeignKey("IdTeams")]
-        public Teams Team { get; set; }
+        [ForeignKey("IdTeam")]
+        public Team Team { get; set; }
     }
 }

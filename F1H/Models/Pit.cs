@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace F1H.Models
 {
-    public class Pits
+    public class Pit
     {
         [Key]
         public int Id { get; set; }

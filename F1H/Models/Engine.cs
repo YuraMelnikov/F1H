@@ -3,17 +3,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace F1H.Models
 {
-    public class StartPositionType
+    public class Engine
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Map { get; set; }
+        public int IdManufacturer { get; set; }
         [Required]
         public int IdImageGp { get; set; }
+        [Required]
+        public string Name { get; set; }
 
+        [ForeignKey("IdManufacturer")]
+        public  Manufacturer Manufacturer { get; set; }
         [ForeignKey("IdImageGp")]
         public  ImageGP Image { get; set; }
     }

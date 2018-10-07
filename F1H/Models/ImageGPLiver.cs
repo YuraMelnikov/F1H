@@ -2,7 +2,7 @@
 
 namespace F1H.Models
 {
-    public class ImagesGPLiver
+    public class ImageGPLiver
     {
         [Key]
         public int Id { get; set; }

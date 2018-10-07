@@ -8,7 +8,7 @@ namespace F1H.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdParticipants { get; set; }
+        public int IdParticipant { get; set; }
         [Required]
         public string Num { get; set; }
         [Required]
@@ -24,8 +24,8 @@ namespace F1H.Models
         [Required]
         public string Description { get; set; }
 
-        [ForeignKey("IdParticipants")]
-        public  Participants Participant { get; set; }
+        [ForeignKey("IdParticipant")]
+        public  Participant Participant { get; set; }
         [ForeignKey("IdTypeFinish")]
         public TypeFinish TFinish { get; set; }
     }

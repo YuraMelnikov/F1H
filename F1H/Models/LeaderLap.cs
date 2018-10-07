@@ -3,18 +3,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace F1H.Models
 {
-    public class Country
+    public class LeaderLap
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public string NameEn { get; set; }
+        public int IdGpResult { get; set; }
         [Required]
-        public string NameRus { get; set; }
+        public int First { get; set; }
         [Required]
-        public int IdImageGpFlag { get; set; }
+        public int Last { get; set; }
 
-        [ForeignKey("IdImageGpFlag")]
-        public  ImageGPFlag Image { get; set; }
+        [ForeignKey("IdGpResult")]
+        public GPResult Result { get; set; }
     }
 }

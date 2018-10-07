@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace F1H.Models
 {
-    public class Teams
+    public class Team
     {
         [Key]
         public int Id { get; set; }
@@ -17,6 +17,6 @@ namespace F1H.Models
         [ForeignKey("IdCountry")]
         public Country Cournt { get; set; }
         [ForeignKey("IndexPhoto")]
-        public ImagesGP Image { get; set; }
+        public ImageGP Image { get; set; }
     }
 }

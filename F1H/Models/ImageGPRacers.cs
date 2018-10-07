@@ -2,7 +2,7 @@
 
 namespace F1H.Models
 {
-    public class ImagesGPRacers
+    public class ImageGPRacers
     {
         [Key]
         public int Id { get; set; }

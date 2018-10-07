@@ -9,7 +9,7 @@ namespace F1H.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdTracks { get; set; }
+        public int IdTrack { get; set; }
         [Required]
         public int Num { get; set; }
         [Required]
@@ -19,7 +19,7 @@ namespace F1H.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public int IdImagesGp { get; set; }
+        public int IdImageGp { get; set; }
         [Required]
         public string Weather { get; set; }
         [Required]
@@ -27,10 +27,10 @@ namespace F1H.Models
         [Required]
         public int IdStartPositionType { get; set; }
 
-        [ForeignKey("IdTracks")]
-        public  Tracks Track { get; set; }
-        [ForeignKey("IdImagesGp")]
-        public  ImagesGP Image { get; set; }
+        [ForeignKey("IdTrack")]
+        public  Track Track { get; set; }
+        [ForeignKey("IdImageGp")]
+        public  ImageGP Image { get; set; }
         [ForeignKey("IdStartPositionType")]
         public  StartPositionType StartType { get; set; }
     }

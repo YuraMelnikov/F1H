@@ -2,7 +2,7 @@
 
 namespace F1H.Models
 {
-    public class ImagesGPConfiguration
+    public class ImageGPConfiguration
     {
         [Key]
         public int Id { get; set; }

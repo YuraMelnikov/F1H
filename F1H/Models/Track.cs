@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace F1H.Models
 {
-    public class Tracks
+    public class Track
     {
         [Key]
         public int Id { get; set; }
         [Required]
         public int IdCountry { get; set; }
         [Required]
-        public int IdImagesGp { get; set; }
+        public int IdImageGp { get; set; }
         [Required]
         public string NameEn { get; set; }
         [Required]
@@ -18,7 +18,7 @@ namespace F1H.Models
 
         [ForeignKey("IdCountry")]
         public  Country Countr { get; set; }
-        [ForeignKey("IdImagesGp")]
-        public ImagesGP Image { get; set; }
+        [ForeignKey("IdImageGp")]
+        public ImageGP Image { get; set; }
     }
 }

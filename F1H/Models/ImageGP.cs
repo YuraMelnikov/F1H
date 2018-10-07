@@ -3,18 +3,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace F1H.Models
 {
-    public class LeaderLaps
+    public class ImageGP
     {
         [Key]
         public int Id { get; set; }
         [Required]
-        public int IdGpResult { get; set; }
+        public string Link { get; set; }
         [Required]
-        public int First { get; set; }
+        public string Description { get; set; }
         [Required]
-        public int Last { get; set; }
-
-        [ForeignKey("IdGpResult")]
-        public GPResult Result { get; set; }
+        public int Size { get; set; }
     }
 }
