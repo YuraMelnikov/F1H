@@ -5,9 +5,9 @@ namespace F1H.Models
     public interface IRepository
     {
         IQueryable<TypeCalculate> TypeCalculates { get; }
-        IQueryable<TypeDNQ> TypeDNQs { get; }
-        IQueryable<TypeFail> TypeFails { get; }
-        IQueryable<TypeFinish> TypeFinishes { get; }
+        //IQueryable<TypeDNQ> TypeDNQs { get; }
+        //IQueryable<TypeFail> TypeFails { get; }
+        //IQueryable<TypeFinish> TypeFinishes { get; }
 
         //IQueryable<Chassi> Chassis { get; }
         //IQueryable<Country> Country { get; }

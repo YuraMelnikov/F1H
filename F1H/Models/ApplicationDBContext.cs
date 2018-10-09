@@ -8,9 +8,9 @@ namespace F1H.Models
             : base(options) { }
 
         public DbSet<TypeCalculate> TypeCalculates { get; set; }
-        public DbSet<TypeDNQ> TypeDNQs { get; set; }
-        public DbSet<TypeFail> TypeFails { get; set; }
-        public DbSet<TypeFinish> TypeFinishes { get; set; }
+        //public DbSet<TypeDNQ> TypeDNQs { get; set; }
+        //public DbSet<TypeFail> TypeFails { get; set; }
+        //public DbSet<TypeFinish> TypeFinishes { get; set; }
 
         //public DbSet<Chassi> Chassis { get; set; }
         //public DbSet<Country> Country { get; set; }

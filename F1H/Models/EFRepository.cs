@@ -11,9 +11,9 @@ namespace F1H.Models
         }
 
         public IQueryable<TypeCalculate> TypeCalculates => context.TypeCalculates;
-        public IQueryable<TypeDNQ> TypeDNQs => context.TypeDNQs;
-        public IQueryable<TypeFail> TypeFails => context.TypeFails;
-        public IQueryable<TypeFinish> TypeFinishes => context.TypeFinishes;
+        //public IQueryable<TypeDNQ> TypeDNQs => context.TypeDNQs;
+        //public IQueryable<TypeFail> TypeFails => context.TypeFails;
+        //public IQueryable<TypeFinish> TypeFinishes => context.TypeFinishes;
 
         //public IQueryable<Chassi> Chassis => context.Chassis;
         //public IQueryable<Country> Country => context.Country;
