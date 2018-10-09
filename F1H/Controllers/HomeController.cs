@@ -5,7 +5,7 @@ namespace F1H.Controllers
 {
     public class HomeController : Controller
     {
-        private IRepository repository;
+        private IF1HRepository repository;
 
         public IActionResult Index()
         {

@@ -2,7 +2,7 @@
 
 namespace F1H.Models
 {
-    public class EFRepository : IRepository
+    public class EFRepository : IF1HRepository
     {
         private ApplicationDbContext context;
         public EFRepository(ApplicationDbContext ctx)

@@ -2,7 +2,7 @@
 
 namespace F1H.Models
 {
-    public interface IRepository
+    public interface IF1HRepository
     {
         IQueryable<TypeCalculate> TypeCalculates { get; }
         //IQueryable<TypeDNQ> TypeDNQs { get; }

@@ -16,7 +16,7 @@ namespace F1H
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["Data:F1H:ConnectionString"]));
-            services.AddTransient<IRepository, EFRepository>();
+            services.AddTransient<IF1HRepository, EFRepository>();
             services.AddMvc();
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
