@@ -13,10 +13,10 @@ namespace F1H
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration["Data:F1H:ConnectionString"]));
-            services.AddTransient<IF1HRepository, EFRepository>();
+            var connection = @"Server=tsqlserver;Database=F1H;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:F1H:ConnectionString"]));
+            services.AddTransient<IF1HRepository, EFF1HRepository>();
             services.AddMvc();
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

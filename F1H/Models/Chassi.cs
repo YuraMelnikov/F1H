@@ -16,11 +16,11 @@ namespace F1H.Models
         [Required]
         public int IdImagesGpChassi { get; set; }
 
-        [ForeignKey("IdManufacturer")]
-        public  Manufacturer Manufacturer { get; set; }
         [ForeignKey("IdImageGp")]
         public ImageGP Image { get; set; }
         [ForeignKey("IdImageGpChassi")]
         public ImageGPLiver ImageLiver { get; set; }
+        [ForeignKey("IdManufacturer")]
+        public Manufacturer Manufacturer { get; set; }
     }
 }
