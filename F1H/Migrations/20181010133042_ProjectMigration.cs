@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace F1H.Migrations
 {
@@ -13,11 +12,11 @@ namespace F1H.Migrations
                 name: "Images",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Link = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Size = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Link = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Size = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,9 +27,9 @@ namespace F1H.Migrations
                 name: "ImagesGPConfigurations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Link = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Link = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,9 +40,9 @@ namespace F1H.Migrations
                 name: "ImagesGPFlags",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Link = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Link = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,9 +53,9 @@ namespace F1H.Migrations
                 name: "ImagesGPLivers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Link = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Link = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,9 +66,9 @@ namespace F1H.Migrations
                 name: "ImagesGPRacers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Link = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Link = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,11 +79,11 @@ namespace F1H.Migrations
                 name: "TypeCalculates",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DescriptionEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DescriptionRus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Name = table.Column<string>(nullable: false),
+                    DescriptionEn = table.Column<string>(nullable: false),
+                    DescriptionRus = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,9 +94,9 @@ namespace F1H.Migrations
                 name: "TypeDNQs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -108,9 +107,9 @@ namespace F1H.Migrations
                 name: "TypeFails",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,10 +120,10 @@ namespace F1H.Migrations
                 name: "TypeFinishes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ShortName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    ShortName = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -135,11 +134,11 @@ namespace F1H.Migrations
                 name: "StartPositionTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    Map = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Name = table.Column<string>(nullable: false),
+                    Map = table.Column<string>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -156,11 +155,11 @@ namespace F1H.Migrations
                 name: "Country",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdImageGpFlag = table.Column<int>(type: "int", nullable: false),
-                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NameRus = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    NameEn = table.Column<string>(nullable: false),
+                    NameRus = table.Column<string>(nullable: false),
+                    IdImageGpFlag = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -177,11 +176,11 @@ namespace F1H.Migrations
                 name: "Seasons",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    IdTypeCalculate = table.Column<int>(type: "int", nullable: false),
-                    Year = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Year = table.Column<int>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false),
+                    IdTypeCalculate = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -204,11 +203,11 @@ namespace F1H.Migrations
                 name: "Manufacturers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdCountry = table.Column<int>(type: "int", nullable: false),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdCountry = table.Column<int>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -231,17 +230,17 @@ namespace F1H.Migrations
                 name: "Racers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Born = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BornIn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Dead = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeadIn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdCountry = table.Column<int>(type: "int", nullable: false),
-                    IndexPhoto = table.Column<int>(type: "int", nullable: false),
-                    SecondName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TextData = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdCountry = table.Column<int>(nullable: false),
+                    Born = table.Column<DateTime>(nullable: false),
+                    BornIn = table.Column<string>(nullable: false),
+                    Dead = table.Column<DateTime>(nullable: false),
+                    DeadIn = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: false),
+                    SecondName = table.Column<string>(nullable: false),
+                    IndexPhoto = table.Column<int>(nullable: false),
+                    TextData = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -264,11 +263,11 @@ namespace F1H.Migrations
                 name: "Teams",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdCountry = table.Column<int>(type: "int", nullable: false),
-                    IndexPhoto = table.Column<int>(type: "int", nullable: false),
-                    ShortName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdCountry = table.Column<int>(nullable: false),
+                    ShortName = table.Column<string>(nullable: false),
+                    IndexPhoto = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -291,12 +290,12 @@ namespace F1H.Migrations
                 name: "Tracks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdCountry = table.Column<int>(type: "int", nullable: false),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    NameEn = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NameRus = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdCountry = table.Column<int>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false),
+                    NameEn = table.Column<string>(nullable: false),
+                    NameRus = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -319,13 +318,13 @@ namespace F1H.Migrations
                 name: "Chassis",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    IdImageGpChassi = table.Column<int>(type: "int", nullable: true),
-                    IdImagesGpChassi = table.Column<int>(type: "int", nullable: false),
-                    IdManufacturer = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdManufacturer = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false),
+                    IdImagesGpChassi = table.Column<int>(nullable: false),
+                    IdImageGpChassi = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -354,11 +353,11 @@ namespace F1H.Migrations
                 name: "Engines",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    IdManufacturer = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdManufacturer = table.Column<int>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -381,11 +380,11 @@ namespace F1H.Migrations
                 name: "Tyres",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    IdManufacturer = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdManufacturer = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -408,11 +407,11 @@ namespace F1H.Migrations
                 name: "TeamNames",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdTeam = table.Column<int>(type: "int", nullable: false),
-                    Time = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdTeam = table.Column<int>(nullable: false),
+                    Time = table.Column<DateTime>(nullable: false),
+                    FullName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -429,13 +428,13 @@ namespace F1H.Migrations
                 name: "GetTrackСonfigurations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    IdImagesGpConfiguration = table.Column<int>(type: "int", nullable: false),
-                    IdSeason = table.Column<int>(type: "int", nullable: false),
-                    IdTrack = table.Column<int>(type: "int", nullable: false),
-                    Length = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdTrack = table.Column<int>(nullable: false),
+                    IdSeason = table.Column<int>(nullable: false),
+                    IdImagesGpConfiguration = table.Column<int>(nullable: false),
+                    Length = table.Column<int>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -447,7 +446,7 @@ namespace F1H.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_GetTrackСonfigurations_ImagesGPConfigurations_IdImagesGpConfiguration",
+                        name: "FK_GetTrackСonfigurations_ImagesGPConfigurations_IdImagesGpCon~",
                         column: x => x.IdImagesGpConfiguration,
                         principalTable: "ImagesGPConfigurations",
                         principalColumn: "Id",
@@ -470,17 +469,17 @@ namespace F1H.Migrations
                 name: "GPs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IdImageGp = table.Column<int>(type: "int", nullable: false),
-                    IdStartPositionType = table.Column<int>(type: "int", nullable: false),
-                    IdTrack = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Num = table.Column<int>(type: "int", nullable: false),
-                    NumInSeason = table.Column<int>(type: "int", nullable: false),
-                    PercentDistance = table.Column<float>(type: "real", nullable: false),
-                    Weather = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdTrack = table.Column<int>(nullable: false),
+                    Num = table.Column<int>(nullable: false),
+                    NumInSeason = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    IdImageGp = table.Column<int>(nullable: false),
+                    Weather = table.Column<string>(nullable: false),
+                    PercentDistance = table.Column<float>(nullable: false),
+                    IdStartPositionType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -509,15 +508,15 @@ namespace F1H.Migrations
                 name: "Participants",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdChassi = table.Column<int>(type: "int", nullable: false),
-                    IdEngine = table.Column<int>(type: "int", nullable: false),
-                    IdGp = table.Column<int>(type: "int", nullable: false),
-                    IdRacer = table.Column<int>(type: "int", nullable: false),
-                    IdTeam = table.Column<int>(type: "int", nullable: false),
-                    IdTyre = table.Column<int>(type: "int", nullable: false),
-                    Num = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdGp = table.Column<int>(nullable: false),
+                    Num = table.Column<string>(nullable: false),
+                    IdTeam = table.Column<int>(nullable: false),
+                    IdChassi = table.Column<int>(nullable: false),
+                    IdEngine = table.Column<int>(nullable: false),
+                    IdRacer = table.Column<int>(nullable: false),
+                    IdTyre = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -564,16 +563,16 @@ namespace F1H.Migrations
                 name: "GPResults",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AverageSpeed = table.Column<float>(type: "real", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IdParticipant = table.Column<int>(type: "int", nullable: false),
-                    IdTypeFinish = table.Column<int>(type: "int", nullable: false),
-                    Lap = table.Column<int>(type: "int", nullable: false),
-                    Num = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Position = table.Column<int>(type: "int", nullable: false),
-                    Time = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdParticipant = table.Column<int>(nullable: false),
+                    Num = table.Column<string>(nullable: false),
+                    Position = table.Column<int>(nullable: false),
+                    Time = table.Column<string>(nullable: false),
+                    AverageSpeed = table.Column<float>(nullable: false),
+                    IdTypeFinish = table.Column<int>(nullable: false),
+                    Lap = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -596,13 +595,13 @@ namespace F1H.Migrations
                 name: "Qualifications",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AverageSpeed = table.Column<float>(type: "real", nullable: false),
-                    IdParticipant = table.Column<int>(type: "int", nullable: false),
-                    Num = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Position = table.Column<int>(type: "int", nullable: false),
-                    Time = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdParticipant = table.Column<int>(nullable: false),
+                    Num = table.Column<string>(nullable: false),
+                    Position = table.Column<int>(nullable: false),
+                    Time = table.Column<string>(nullable: false),
+                    AverageSpeed = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -619,10 +618,10 @@ namespace F1H.Migrations
                 name: "DescriptionResults",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdGpResult = table.Column<int>(type: "int", nullable: false),
-                    TextData = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdGpResult = table.Column<int>(nullable: false),
+                    TextData = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -639,10 +638,10 @@ namespace F1H.Migrations
                 name: "DNQs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdGpResult = table.Column<int>(type: "int", nullable: false),
-                    IdTypeDnq = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdGpResult = table.Column<int>(nullable: false),
+                    IdTypeDnq = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -665,10 +664,10 @@ namespace F1H.Migrations
                 name: "Fails",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdGpResult = table.Column<int>(type: "int", nullable: false),
-                    IdTypeFail = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdGpResult = table.Column<int>(nullable: false),
+                    IdTypeFail = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -691,12 +690,12 @@ namespace F1H.Migrations
                 name: "FastLaps",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AverageSpeed = table.Column<float>(type: "real", nullable: false),
-                    IdGpResult = table.Column<int>(type: "int", nullable: false),
-                    Lap = table.Column<int>(type: "int", nullable: false),
-                    Time = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdGpResult = table.Column<int>(nullable: false),
+                    Lap = table.Column<int>(nullable: false),
+                    Time = table.Column<string>(nullable: false),
+                    AverageSpeed = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -713,11 +712,11 @@ namespace F1H.Migrations
                 name: "LeaderLaps",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    First = table.Column<int>(type: "int", nullable: false),
-                    IdGpResult = table.Column<int>(type: "int", nullable: false),
-                    Last = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdGpResult = table.Column<int>(nullable: false),
+                    First = table.Column<int>(nullable: false),
+                    Last = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -734,10 +733,10 @@ namespace F1H.Migrations
                 name: "Pits",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IdGpResult = table.Column<int>(type: "int", nullable: false),
-                    Lap = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    IdGpResult = table.Column<int>(nullable: false),
+                    Lap = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

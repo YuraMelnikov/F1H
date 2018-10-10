@@ -11,8 +11,6 @@ namespace F1H.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var cascadeFKs = modelBuilder.Model.GetEntityTypes()
@@ -22,9 +20,6 @@ namespace F1H.Models
                 fk.DeleteBehavior = DeleteBehavior.Restrict;
             base.OnModelCreating(modelBuilder);
         }
-
-
-
 
         public DbSet<TypeCalculate> TypeCalculates { get; set; }
         public DbSet<TypeDNQ> TypeDNQs { get; set; }
