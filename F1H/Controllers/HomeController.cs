@@ -1,7 +1,10 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
+using System.Text;
 using F1H.Models;
+using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 
 namespace F1H.Controllers
@@ -15,40 +18,38 @@ namespace F1H.Controllers
         {
             TestParcer();
             return View();
-            //return View(repository.Countries);
-        }
-
-        private static Stream GetStreamFromUrl(string url)
-        {
-            byte[] imageData = null;
-            using (var wc = new System.Net.WebClient())
-                imageData = wc.DownloadData(url);
-            return new MemoryStream(imageData);
         }
 
         public void TestParcer()
         {
-            HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
-            // There are various options, set as needed
-            htmlDoc.OptionFixNestedTags = true;
-            filePath = GetStreamFromUrl("http://logicalerrors.com/");
-            // filePath is a path to a file containing the html
-            htmlDoc.Load(filePath);
-            // Use:  htmlDoc.LoadHtml(xmlString);  to load from a string (was htmlDoc.LoadXML(xmlString)
-            // ParseErrors is an ArrayList containing any errors from the Load statement
-            if (htmlDoc.ParseErrors != null && htmlDoc.ParseErrors.Count() > 0)
+            string startLinkCountry = "https://wildsoft.motorsport.com/cnt.php?id=2";
+            int count = 2;
+            List<string> listCountry = new List<string>();
+            bool correct = false;
+            while (correct != true)
             {
-
-                //var node = htmlDoc.DocumentNode.SelectSingleNode("//head/title");
-                var node = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='main_content']");
-                int x = 0;
-                // Handle any parse errors as required
+                WebClient GodLikeClient = new WebClient();
+                HtmlDocument GodLikeHTML = new HtmlDocument();
+                Encoding encoding = CodePagesEncodingProvider.Instance.GetEncoding(1251);
+                try
+                {
+                    GodLikeHTML.Load(GodLikeClient.OpenRead(startLinkCountry.Substring(0, startLinkCountry.Length - 1) + count.ToString()), encoding);
+                    var t = GodLikeHTML.DocumentNode.SelectNodes("//html/body/table/tbody/");
+                    var yy = 1;
+                    
+                }
+                catch(Exception ex)
+                {
+                    correct = true;
+                }
+                count++;
             }
-            else
-            {
 
-            }
 
+
+            
+
+            int x = 0;
         }
     }
 }
