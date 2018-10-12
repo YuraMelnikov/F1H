@@ -67,5 +67,7 @@ namespace F1H.Models
         void AddRacer(Racer racer);
         void AddStartPositionType(StartPositionType startPositionType);
         void AddTyre(Tyre tyre);
+
+        void SaveChanges();
     }
 }
