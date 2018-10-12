@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using F1H.Models;
@@ -12,15 +13,17 @@ namespace F1H.Controllers
     public class HomeController : Controller
     {
         private IF1HRepository repository;
+        public HomeController(IF1HRepository repo) => repository = repo;
+
         private Stream filePath;
 
         public IActionResult Index()
         {
-            TestParcer();
+            ParcerCountry();
             return View();
         }
 
-        public void TestParcer()
+        public void ParcerCountry()
         {
             string startLinkCountry = "https://wildsoft.motorsport.com/cnt.php?id=2";
             int count = 2;
@@ -34,9 +37,10 @@ namespace F1H.Controllers
                 try
                 {
                     GodLikeHTML.Load(GodLikeClient.OpenRead(startLinkCountry.Substring(0, startLinkCountry.Length - 1) + count.ToString()), encoding);
-                    var t = GodLikeHTML.DocumentNode.SelectNodes("//html/body/table/tbody/");
-                    var yy = 1;
-                    
+                    var t = GodLikeHTML.DocumentNode.SelectNodes("/html[1]/body[1]/center[1]/div[2]/div[2]/table[1]/tr[1]/td[1]/p[1]/h1[1]");
+                    if(t.First().InnerText == "")
+                        break;
+                    listCountry.Add(t.First().InnerText);
                 }
                 catch(Exception ex)
                 {
@@ -44,11 +48,6 @@ namespace F1H.Controllers
                 }
                 count++;
             }
-
-
-
-            
-
             int x = 0;
         }
     }
