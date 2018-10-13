@@ -5,6 +5,7 @@
 <ItemGroup>
     <Folder Include="wwwroot\Content\Flags\" />
     <Folder Include="wwwroot\Content\Images\" />
+    <Folder Include="wwwroot\Content\ImagesManufacturing\" />
 </ItemGroup>
 <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.1.3" />
