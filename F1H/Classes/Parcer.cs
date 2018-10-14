@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using F1H.Models;
 using HtmlAgilityPack;
 
@@ -39,6 +40,18 @@ namespace F1H.Classes
             repository.SaveChanges();
             return imageGP;
         }
+
+        protected Manufacturer CreateManufacturer(string name, int idImageGp)
+        {
+            Manufacturer manufacturer = new Manufacturer();
+            manufacturer.IdCountry = 1;
+            manufacturer.Name = name;
+            manufacturer.IdImageGp = idImageGp;
+            repository.AddManufacturer(manufacturer);
+            repository.SaveChanges();
+            return manufacturer;
+        }
+            
 
         protected string GetTextDataNode(string xPath)
         {

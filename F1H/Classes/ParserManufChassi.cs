@@ -21,34 +21,29 @@ namespace F1H.Classes
         string xPathMImage = "/html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[1]/img[1]";
         string folderImageManuf = @"~/Content/ImagesManufacturing/";
 
+        string xPathCName = "\\name";
 
-
+        
         public void SaveData()
         {
-            //Man = NAme + 1Country + Images(Save)
             //Chassi = IdManufacturer + Name + 1 + IdImagesGpChassi(Save or null1)
-
-
-
-
             List<string> linksList = GetListLink();
             foreach(var DATA in linksList)
             {
-
-                //NameMan
+                ////Create Image
                 GodLikeHTML.Load(GodLikeClient.OpenRead(DATA), Encoding);
-                string mName = GetTextDataNode(xPathMName);
-                //SaveImage
-                GodLikeHTML.Load(GodLikeClient.OpenRead(DATA), Encoding);
-                SaveFileToServer(GetScrDataNode(xPathMImage), folderImageManuf);
-                //delete /img/cnt/
-                ImageGP imageGP = SaveImage(folderImageManuf + "");
+                //SaveFileToServer(GetScrDataNode(xPathMImage), folderImageManuf);
+                //ImageGP imageGP = SaveImage(folderImageManuf + GetScrDataNode(xPathMImage).Replace("img/cha/small/", ""));
+
+                ////CreateMan
+                ////GodLikeHTML.Load(GodLikeClient.OpenRead(DATA), Encoding);
+                //string mName = GetTextDataNode(xPathMName);
+                //Manufacturer manufacturer = CreateManufacturer(mName, imageGP.Id);
 
 
-                //CreateMan
-
+                List<ChassiLoad> listChassis = GetChassiLoads();
                 //ColChass
-                //////Name
+                //////Name - проверка от повторяемости
                 //////IdImagesGpChassi - null
                 ///
 
@@ -56,13 +51,16 @@ namespace F1H.Classes
 
 
             }
-
-
-
         }
 
 
+        private List<ChassiLoad> GetChassiLoads()
+        {
+            List<ChassiLoad> listChassis = new List<ChassiLoad>();
+            var x = GodLikeHTML.DocumentNode.SelectNodes(xPathCName);
 
+            return listChassis;
+        }
 
         private List<string> GetListLink()
         {
