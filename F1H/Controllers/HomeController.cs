@@ -14,12 +14,14 @@ namespace F1H.Controllers
     public class HomeController : Controller
     {
         private IF1HRepository repository;
-        //public HomeController(IF1HRepository repo) => repository = repo;
+        public HomeController(IF1HRepository repo) => repository = repo;
 
         public IActionResult Index()
         {
-            ParserManufChassi parser = new ParserManufChassi(repository);
-            parser.SaveData();
+            //ParcerCountry parcerCountry = new ParcerCountry(repository);
+            //parcerCountry.GetCountry();
+            //ParserManufChassi parser = new ParserManufChassi(repository);
+            //parser.SaveData();
             return View();
         }
 

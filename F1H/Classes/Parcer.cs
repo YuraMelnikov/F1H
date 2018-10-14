@@ -24,7 +24,13 @@ namespace F1H.Classes
 
         protected string GetScrDataNode(string xPath)
         {
-            return GodLikeHTML.DocumentNode.SelectNodes(xPath).First().Attributes.First().DeEntitizeValue;
+            try {
+                return GodLikeHTML.DocumentNode.SelectNodes(xPath).First().Attributes.First().DeEntitizeValue;
+            }
+            catch {
+                return "";
+            }
+            
         }
         protected void SaveFileToServer(string scrFile, string folderUpload)
         {

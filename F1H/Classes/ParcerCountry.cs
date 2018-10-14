@@ -15,11 +15,12 @@ namespace F1H.Classes
         string linkFirstCountry = "https://wildsoft.motorsport.com/cnt.php?id=2";
         string xPathRusName = "/html[1]/body[1]/center[1]/div[2]/div[2]/table[1]/tr[1]/td[1]/p[1]/h1[1]";
         string xPathScrFlag = "/html[1]/body[1]/center[1]/div[2]/div[2]/table[2]/tr[1]/td[1]/img[1]";
-        string folderFlag = @"~/Content/Flags/";
+        string folderFlag = @"wwwroot/Content/Flags/";
 
         public void GetCountry()
         {
-            List<CountryLoad> listCountry = GetListCountryLoad();
+            List<CountryLoad> listCountry = new List<CountryLoad>();
+            listCountry = GetListCountryLoad();
             foreach (var DATA in listCountry)
             {
                 Country country = new Country();
