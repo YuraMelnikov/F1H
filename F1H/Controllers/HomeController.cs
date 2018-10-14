@@ -20,8 +20,11 @@ namespace F1H.Controllers
         {
             //ParcerCountry parcerCountry = new ParcerCountry(repository);
             //parcerCountry.GetCountry();
-            //ParserManufChassi parser = new ParserManufChassi(repository);
-            //parser.SaveData();
+            //ParserManufChassi parserManufChassi = new ParserManufChassi(repository);
+            //parserManufChassi.SaveData();
+
+            ParcerEngine parcerEngine = new ParcerEngine(repository);
+            parcerEngine.SaveData();
             return View();
         }
 
