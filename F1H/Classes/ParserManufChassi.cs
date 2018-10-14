@@ -21,9 +21,12 @@ namespace F1H.Classes
         string xPathMImage = "/html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[1]/img[1]";
         string folderImageManuf = @"~/Content/ImagesManufacturing/";
 
-        string xPathCName = "\\name";
+        string xPathCName = "//html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr/td[2]";
+        ///html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr[1]/td[2]/#text[1]
+        ///html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr[3]/td[2]/#text[1]
 
-        
+
+
         public void SaveData()
         {
             //Chassi = IdManufacturer + Name + 1 + IdImagesGpChassi(Save or null1)
@@ -37,11 +40,11 @@ namespace F1H.Classes
 
                 ////CreateMan
                 ////GodLikeHTML.Load(GodLikeClient.OpenRead(DATA), Encoding);
-                //string mName = GetTextDataNode(xPathMName);
+                string mName = GetTextDataNode(xPathMName);
                 //Manufacturer manufacturer = CreateManufacturer(mName, imageGP.Id);
 
 
-                List<ChassiLoad> listChassis = GetChassiLoads();
+                List<ChassiLoad> listChassis = GetChassiLoads(mName);
                 //ColChass
                 //////Name - проверка от повторяемости
                 //////IdImagesGpChassi - null
@@ -54,10 +57,19 @@ namespace F1H.Classes
         }
 
 
-        private List<ChassiLoad> GetChassiLoads()
+        private List<ChassiLoad> GetChassiLoads(string mName)
         {
             List<ChassiLoad> listChassis = new List<ChassiLoad>();
-            var x = GodLikeHTML.DocumentNode.SelectNodes(xPathCName);
+            var collectionNames = GodLikeHTML.DocumentNode.SelectNodes(xPathCName).Where(d => d.InnerHtml != d.InnerText);
+
+            foreach(var DATA in collectionNames)
+            {
+                if(listChassis.Where(d => d.Name == DATA.InnerText).Count() == 0)
+                {
+
+                }
+            }
+
 
             return listChassis;
         }
@@ -88,5 +100,14 @@ namespace F1H.Classes
             return listLink;
         }
 
+
+        private ImageGPLiver SaveImageGPLiver(string link)
+        {
+            ImageGPLiver imageGP = new ImageGPLiver();
+            imageGP.Link = link;
+            repository.AddImageGPLiver(imageGP);
+            repository.SaveChanges();
+            return imageGP;
+        }
     }
 }
