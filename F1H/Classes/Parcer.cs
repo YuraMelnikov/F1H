@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Text.RegularExpressions;
 using F1H.Models;
 using HtmlAgilityPack;
 
@@ -10,6 +9,9 @@ namespace F1H.Classes
 {
     public class Parcer
     {
+        protected int firstIdImages = 1;
+        protected int firstIdImagesLivery = 1;
+
         protected IF1HRepository repository;
         public Parcer(IF1HRepository repo) => repository = repo;
         WebClient godLikeClient = new WebClient();
@@ -53,9 +55,16 @@ namespace F1H.Classes
             manufacturer.IdCountry = 1;
             manufacturer.Name = name;
             manufacturer.IdImageGp = idImageGp;
-            repository.AddManufacturer(manufacturer);
-            repository.SaveChanges();
-            return manufacturer;
+            if (repository.Manufacturers.Count(d => d.Name == manufacturer.Name) == 0)
+            {
+                repository.AddManufacturer(manufacturer);
+                repository.SaveChanges();
+                return manufacturer;
+            }
+            else
+            {
+                return repository.Manufacturers.First(d => d.Name == manufacturer.Name);
+            }
         }
             
 

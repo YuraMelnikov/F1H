@@ -12,17 +12,20 @@ namespace F1H.Classes
         {
 
         }
-        string indexLink = "https://wildsoft.motorsport.com/cha.php?l=";
-        string xPathLinkData1 = "html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[";
-        string xPathLinkData2 = "]/a[1]/@href[1]";
-        string xPathMName = "/html[1]/body[1]/center[1]/div[3]/div[2]/table[1]/tr[1]/td[1]/p[1]/h1[1]";
-        string xPathMImage = "/html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[1]/img[1]";
-        string folderImageManuf = @"wwwroot/Content/ImagesManufacturing/";
-        string xPathCName = "//html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr/td[2]";
-        string folderImageLivery = @"wwwroot/Content/Livery/";
 
+        protected virtual string IndexLink { get; } = "https://wildsoft.motorsport.com/cha.php?l=";
+        protected string xPathLinkData1 = "html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[";
+        protected string xPathLinkData2 = "]/a[1]/@href[1]";
+        protected string xPathMName = "/html[1]/body[1]/center[1]/div[3]/div[2]/table[1]/tr[1]/td[1]/p[1]/h1[1]";
+        protected string xPathMImage = "/html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[1]/img[1]";
+        protected string folderImageManuf = @"wwwroot/Content/ImagesManufacturing/";
 
-        public void SaveData()
+        protected virtual string XPathCName { get; } =
+            "//html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr/td[2]";
+
+        protected string folderImageLivery = @"wwwroot/Content/Livery/";
+
+        public virtual void SaveData()
         {
             List<string> linksList = GetListLink();
             foreach(var DATA in linksList)
@@ -39,23 +42,21 @@ namespace F1H.Classes
                 ImageGP imageGP = new ImageGP();
                 imageGP = SaveImage(folderImageManuf + GetScrDataNode(xPathMImage).Replace("img/cha/small/", ""));
                 string mName = GetTextDataNode(xPathMName);
-                Manufacturer manufacturer = new Manufacturer();
-                manufacturer = CreateManufacturer(mName, imageGP.Id);
+                Manufacturer manufacturer = CreateManufacturer(mName, imageGP.Id);
                 List<ChassiLoad> listChassis = GetChassiLoads(mName, manufacturer.Id);
             }
         }
-
-
-        private List<ChassiLoad> GetChassiLoads(string mName, int idM)
+        
+        protected virtual List<ChassiLoad> GetChassiLoads(string mName, int idM)
         {
             List<ChassiLoad> listChassis = new List<ChassiLoad>();
-            var collectionNames = GodLikeHTML.DocumentNode.SelectNodes(xPathCName).Where(d => d.InnerHtml != d.InnerText);
+            var collectionNames = GodLikeHTML.DocumentNode.SelectNodes(XPathCName).Where(d => d.InnerHtml != d.InnerText);
             foreach (var DATA in collectionNames)
             {
                 if (listChassis.Where(d => d.Name == DATA.InnerText).Count() == 0)
                 {
                     string linkImage = "";
-                    int idImageLiver = 1;
+                    int idImageLiver = firstIdImagesLivery;
                     try
                     {
                         linkImage = DATA.ChildNodes.Where(d => d.Name == "img").First().Attributes.First().DeEntitizeValue;
@@ -70,11 +71,10 @@ namespace F1H.Classes
                         ImageGPLiver image = SaveimageLiver(folderImageLivery + linkImage.Replace("img/cha/mod/", ""));
                         idImageLiver = image.Id;
                     }
-                    ChassiLoad chassiLoad = new ChassiLoad(DATA.InnerText, idImageLiver);
                     Chassi chassi = new Chassi();
                     chassi.IdManufacturer = idM;
                     chassi.Name = DATA.InnerText.Replace(mName + " ", "");
-                    chassi.IdImageGp = 2;
+                    chassi.IdImageGp = firstIdImages;
                     chassi.IdImagesGpChassi = idImageLiver;
                     repository.AddChassi(chassi);
                     repository.SaveChanges();
@@ -92,7 +92,7 @@ namespace F1H.Classes
             return image;
         }
         
-        private List<string> GetListLink()
+        protected List<string> GetListLink()
         {
             List<string> listLink = new List<string>();
             for(int i = 65; i <= 90; i++)
@@ -100,7 +100,7 @@ namespace F1H.Classes
                 bool correct = false;
                 int counterStep = 1;
                 string tmp = Convert.ToChar(i).ToString();
-                GodLikeHTML.Load(GodLikeClient.OpenRead(indexLink + Convert.ToChar(i).ToString()), Encoding);
+                GodLikeHTML.Load(GodLikeClient.OpenRead(IndexLink + Convert.ToChar(i).ToString()), Encoding);
                 while(correct != true)
                 {
                     try
@@ -117,8 +117,7 @@ namespace F1H.Classes
             }
             return listLink;
         }
-
-
+        
         private ImageGPLiver SaveImageGPLiver(string link)
         {
             ImageGPLiver imageGP = new ImageGPLiver();

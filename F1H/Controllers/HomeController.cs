@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using F1H.Classes;
+﻿using F1H.Classes;
 using F1H.Models;
-using HtmlAgilityPack;
 using Microsoft.AspNetCore.Mvc;
 
 namespace F1H.Controllers
@@ -22,7 +15,7 @@ namespace F1H.Controllers
             //parcerCountry.GetCountry();
             //ParserManufChassi parserManufChassi = new ParserManufChassi(repository);
             //parserManufChassi.SaveData();
-
+            //new method
             ParcerEngine parcerEngine = new ParcerEngine(repository);
             parcerEngine.SaveData();
             return View();
