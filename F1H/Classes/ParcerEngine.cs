@@ -15,7 +15,7 @@ namespace F1H.Classes
         protected override string IndexLink { get; } = "https://wildsoft.motorsport.com/eng.php?l=";
 
         protected override string XPathCName { get; } =
-            "//html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr/td[2]";
+            "//html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr[1]";
 
         public override void SaveData()
         {
@@ -32,8 +32,7 @@ namespace F1H.Classes
         private List<ChassiLoad> GetChassiLoads(string mName, int idM)
         {
             List<ChassiLoad> listChassis = new List<ChassiLoad>();
-
-
+            
             //incorrect Noda
             var collectionNames = GodLikeHTML.DocumentNode.SelectNodes(XPathCName).Where(d => d.InnerHtml != d.InnerText);
             foreach (var DATA in collectionNames)

@@ -95,7 +95,7 @@ namespace F1H.Classes
         protected List<string> GetListLink()
         {
             List<string> listLink = new List<string>();
-            for(int i = 65; i <= 90; i++)
+            for(int i = 65; i <= 65; i++) //90
             {
                 bool correct = false;
                 int counterStep = 1;

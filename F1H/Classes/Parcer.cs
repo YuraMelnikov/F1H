@@ -9,7 +9,7 @@ namespace F1H.Classes
 {
     public class Parcer
     {
-        protected int firstIdImages = 1;
+        protected int firstIdImages = 2;
         protected int firstIdImagesLivery = 1;
 
         protected IF1HRepository repository;
@@ -52,6 +52,7 @@ namespace F1H.Classes
         protected Manufacturer CreateManufacturer(string name, int idImageGp)
         {
             Manufacturer manufacturer = new Manufacturer();
+            manufacturer.Id = 0;
             manufacturer.IdCountry = 1;
             manufacturer.Name = name;
             manufacturer.IdImageGp = idImageGp;
