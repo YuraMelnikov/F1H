@@ -13,9 +13,7 @@ namespace F1H.Classes
         }
         
         protected override string IndexLink { get; } = "https://wildsoft.motorsport.com/eng.php?l=";
-
-        protected override string XPathCName { get; } =
-            "//html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr[1]";
+        protected override string XPathCName { get; } = "cell_cla_br-rt";
 
         public override void SaveData()
         {
@@ -33,10 +31,13 @@ namespace F1H.Classes
         {
             List<ChassiLoad> listChassis = new List<ChassiLoad>();
             
-            //incorrect Noda
-            var collectionNames = GodLikeHTML.DocumentNode.SelectNodes(XPathCName).Where(d => d.InnerHtml != d.InnerText);
+            var collectionNames = GodLikeHTML.DocumentNode.SelectNodes("//td[@class='" + XPathCName + "']");
             foreach (var DATA in collectionNames)
             {
+                if(DATA.XPath.Substring(DATA.XPath.Length - 2, 1) != "2")
+                {
+                    continue;
+                }
                 if (listChassis.Where(d => d.Name == DATA.InnerText).Count() == 0)
                 {
                     Engine engine = new Engine();

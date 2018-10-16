@@ -9,7 +9,7 @@ namespace F1H.Classes
 {
     public class Parcer
     {
-        protected int firstIdImages = 2;
+        protected int firstIdImages = 1;
         protected int firstIdImagesLivery = 1;
 
         protected IF1HRepository repository;
