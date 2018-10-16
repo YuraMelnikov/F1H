@@ -7,6 +7,8 @@
     <Folder Include="wwwroot\Content\Images\" />
     <Folder Include="wwwroot\Content\ImagesManufacturing\" />
     <Folder Include="wwwroot\Content\Livery\" />
+    <Folder Include="wwwroot\Content\ImageDriver\" />
+    <Folder Include="wwwroot\Content\Images\" />
 </ItemGroup>
 <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.1.3" />

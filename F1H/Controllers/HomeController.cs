@@ -17,6 +17,8 @@ namespace F1H.Controllers
             //parserManufChassi.SaveData();
             //ParcerEngine parcerEngine = new ParcerEngine(repository);
             //parcerEngine.SaveData();
+            ParcerRacers parcerRacers = new ParcerRacers(repository);
+            parcerRacers.SaveData();
             return View();
         }
 

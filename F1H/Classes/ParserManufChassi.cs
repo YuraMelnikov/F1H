@@ -17,13 +17,16 @@ namespace F1H.Classes
         protected string xPathLinkData1 = "html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[";
         protected string xPathLinkData2 = "]/a[1]/@href[1]";
         protected string xPathMName = "/html[1]/body[1]/center[1]/div[3]/div[2]/table[1]/tr[1]/td[1]/p[1]/h1[1]";
-        protected string xPathMImage = "/html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[1]/img[1]";
+
+        protected virtual string XPathMImage { get; } =
+            "/html[1]/body[1]/center[1]/div[3]/div[1]/table[1]/tr[2]/td[1]/div[1]/div[1]/img[1]";
+
         protected string folderImageManuf = @"wwwroot/Content/ImagesManufacturing/";
 
         protected virtual string XPathCName { get; } =
             "//html[1]/body[1]/center[1]/div[3]/div[2]/table[3]/tr[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/td[1]/b[1]/tr/td[2]";
 
-        protected string folderImageLivery = @"wwwroot/Content/Livery/";
+        protected virtual string FolderImageLivery { get; } = @"wwwroot/Content/Livery/";
 
         public virtual void SaveData()
         {
@@ -33,14 +36,14 @@ namespace F1H.Classes
                 GodLikeHTML.Load(GodLikeClient.OpenRead(DATA), Encoding);
                 try
                 {
-                    SaveFileToServer(GetScrDataNode(xPathMImage), folderImageManuf);
+                    SaveFileToServer(GetScrDataNode(XPathMImage), folderImageManuf);
                 }
                 catch
                 {
 
                 }
                 ImageGP imageGP = new ImageGP();
-                imageGP = SaveImage(folderImageManuf + GetScrDataNode(xPathMImage).Replace("img/cha/small/", ""));
+                imageGP = SaveImage(folderImageManuf + GetScrDataNode(XPathMImage).Replace("img/cha/small/", ""));
                 string mName = GetTextDataNode(xPathMName);
                 Manufacturer manufacturer = CreateManufacturer(mName, imageGP.Id);
                 List<ChassiLoad> listChassis = GetChassiLoads(mName, manufacturer.Id);
@@ -67,8 +70,8 @@ namespace F1H.Classes
                     }
                     if(linkImage != "")
                     {
-                        SaveFileToServer(linkImage, folderImageLivery);
-                        ImageGPLiver image = SaveimageLiver(folderImageLivery + linkImage.Replace("img/cha/mod/", ""));
+                        SaveFileToServer(linkImage, FolderImageLivery);
+                        ImageGPLiver image = SaveimageLiver(FolderImageLivery + linkImage.Replace("img/cha/mod/", ""));
                         idImageLiver = image.Id;
                     }
                     Chassi chassi = new Chassi();
