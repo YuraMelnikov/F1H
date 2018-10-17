@@ -21,7 +21,8 @@ namespace F1H.Controllers
             //parcerRacers.SaveData();
             //ParserTyre parserTyre = new ParserTyre(repository);
             //parserTyre.CreateTyre();
-
+            ParserTracks parserTracks = new ParserTracks(repository);
+            parserTracks.GetTracks();
             return View();
         }
 
