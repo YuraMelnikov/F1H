@@ -19,7 +19,6 @@ namespace F1H.Models
         IQueryable<TrackСonfiguration> GetTrackСonfigurations { get; }
         IQueryable<Track> Tracks { get; }
         IQueryable<Team> Teams { get; }
-        IQueryable<TeamName> TeamNames { get; }
         IQueryable<Chassi> Chassis { get; }
         IQueryable<DescriptionResult> DescriptionResults { get; }
         IQueryable<DNQ> DNQs { get; }
@@ -51,7 +50,6 @@ namespace F1H.Models
         void AddTrackСonfiguration(TrackСonfiguration trackСonfiguration);
         void AddTrack(Track track);
         void AddTeam(Team team);
-        void AddTeamName(TeamName teamName);
         void AddChassi(Chassi chassi);
         void AddDescriptionResult(DescriptionResult descriptionResult);
         void AddDNQ(DNQ dnq);

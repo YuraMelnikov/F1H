@@ -16,7 +16,7 @@ namespace F1H.Classes
         public Parcer(IF1HRepository repo) => repository = repo;
         WebClient godLikeClient = new WebClient();
         HtmlDocument godLikeHTML = new HtmlDocument();
-        string startPagesSite = "https://wildsoft.motorsport.com/";
+        protected string startPagesSite = "https://wildsoft.motorsport.com/";
         Encoding encoding = CodePagesEncodingProvider.Instance.GetEncoding(1251);
 
         public WebClient GodLikeClient { get => godLikeClient; set => godLikeClient = value; }
@@ -68,10 +68,62 @@ namespace F1H.Classes
             }
         }
             
-
         protected string GetTextDataNode(string xPath)
         {
             return GodLikeHTML.DocumentNode.SelectNodes(xPath).First().InnerText;
         }
+
+
+        public void CrateDefaultData()
+        {
+            ImageGP imageGP = new ImageGP
+            {
+                Link = "",
+                Description = "",
+                Size = 0
+            };
+            repository.AddImageGP(imageGP);
+            ImageGPConfiguration imageGpConfiguration = new ImageGPConfiguration
+            {
+                Link = ""
+            };
+            repository.AddImageGPConfiguration(imageGpConfiguration);
+            ImageGPLiver lmGpLiver = new ImageGPLiver
+            {
+                Link = ""
+            };
+            repository.AddImageGPLiver(lmGpLiver);
+            ImageGPRacers imageGpRacers = new ImageGPRacers
+            {
+                Link = ""
+            };
+            repository.AddImageGPRacers(imageGpRacers);
+            TypeCalculate typeCalculate = new TypeCalculate
+            {
+                Name = "",
+                DescriptionEn = "",
+                DescriptionRus = ""
+            };
+            repository.AddTypeCalculate(typeCalculate);
+            repository.SaveChanges();
+            CreateSeasons();
+        }
+
+        public void CreateSeasons()
+        {
+            for (int i = 1950; i < 2019; i++)
+            {
+                Season season = new Season
+                {
+                    IdImageGp = 1,
+                    IdTypeCalculate = 1,
+                    Year = i
+                };
+                repository.AddSeason(season);
+                repository.SaveChanges();
+            }
+        }
+
+
     }
 }

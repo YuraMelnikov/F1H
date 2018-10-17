@@ -37,7 +37,6 @@ namespace F1H.Models
         public DbSet<TrackСonfiguration> GetTrackСonfigurations { get; set; }
         public DbSet<Track> Tracks { get; set; }
         public DbSet<Team> Teams { get; set; }
-        public DbSet<TeamName> TeamNames { get; set; }
 
         public DbSet<Chassi> Chassis { get; set; }
         public DbSet<DescriptionResult> DescriptionResults { get; set; }

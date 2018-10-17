@@ -11,6 +11,8 @@ namespace F1H.Controllers
 
         public IActionResult Index()
         {
+            //Parcer parcer = new Parcer(repository);
+            //parcer.CrateDefaultData();
             //ParcerCountry parcerCountry = new ParcerCountry(repository);
             //parcerCountry.GetCountry();
             //ParserManufChassi parserManufChassi = new ParserManufChassi(repository);

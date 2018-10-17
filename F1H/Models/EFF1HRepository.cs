@@ -25,7 +25,6 @@ namespace F1H.Models
         public IQueryable<TrackСonfiguration> GetTrackСonfigurations => context.GetTrackСonfigurations;
         public IQueryable<Track> Tracks => context.Tracks;
         public IQueryable<Team> Teams => context.Teams;
-        public IQueryable<TeamName> TeamNames => context.TeamNames;
         public IQueryable<Chassi> Chassis => context.Chassis;
         public IQueryable<DescriptionResult> DescriptionResults => context.DescriptionResults;
         public IQueryable<DNQ> DNQs => context.DNQs;
@@ -106,10 +105,6 @@ namespace F1H.Models
         public void AddTeam(Team team)
         {
             context.Add(team);
-        }
-        public void AddTeamName(TeamName teamName)
-        {
-            context.Add(teamName);
         }
         public void AddChassi(Chassi chassi)
         {

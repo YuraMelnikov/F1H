@@ -16,6 +16,8 @@ namespace F1H.Models
         [Required]
         public int Length { get; set; }
         [Required]
+        public string Name { get; set; }
+        [Required]
         public int IdImageGp { get; set; }
 
         [ForeignKey("IdImageGp")]
