@@ -26,7 +26,6 @@ namespace F1H.Classes
         private string bornIn = "/html[1]/body[1]/center[1]/div[3]/div[2]/table[2]/tr[1]/td[1]/em[1]/td[2]/table[1]/tr[1]/td[3]";
         private string dead = "/html[1]/body[1]/center[1]/div[3]/div[2]/table[2]/tr[1]/td[1]/em[1]/td[2]/table[1]/tr[2]/td[2]";
         private string deadIn = "/html[1]/body[1]/center[1]/div[3]/div[2]/table[2]/tr[1]/td[1]/em[1]/td[2]/table[1]/tr[2]/td[3]";
-        private string textData;
 
         public override void SaveData()
         {
@@ -81,7 +80,16 @@ namespace F1H.Classes
                 {
                     racer.Dead = new DateTime();
                 }
-                racer.BornIn = GodLikeHTML.DocumentNode.SelectNodes(bornIn).First().InnerText;
+
+                try
+                {
+                    racer.BornIn = GodLikeHTML.DocumentNode.SelectNodes(bornIn).First().InnerText;
+                }
+                catch 
+                {
+                    racer.BornIn = "";
+                }
+                
                 try
                 {
                     racer.DeadIn = GodLikeHTML.DocumentNode.SelectNodes(deadIn).First().InnerText;

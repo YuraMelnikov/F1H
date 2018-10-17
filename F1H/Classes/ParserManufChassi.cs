@@ -71,14 +71,14 @@ namespace F1H.Classes
                     if(linkImage != "")
                     {
                         SaveFileToServer(linkImage, FolderImageLivery);
-                        ImageGPLiver image = SaveimageLiver(FolderImageLivery + linkImage.Replace("img/cha/mod/", ""));
+                        ImageGPLivery image = SaveimageLiver(FolderImageLivery + linkImage.Replace("img/cha/mod/", ""));
                         idImageLiver = image.Id;
                     }
                     Chassi chassi = new Chassi();
                     chassi.IdManufacturer = idM;
                     chassi.Name = DATA.InnerText.Replace(mName + " ", "");
                     chassi.IdImageGp = firstIdImages;
-                    chassi.IdImagesGpChassi = idImageLiver;
+                    chassi.IdImageGPLivery = idImageLiver;
                     repository.AddChassi(chassi);
                     repository.SaveChanges();
                 }
@@ -86,9 +86,9 @@ namespace F1H.Classes
             return listChassis;
         }
         
-        private ImageGPLiver SaveimageLiver(string link)
+        private ImageGPLivery SaveimageLiver(string link)
         {
-            ImageGPLiver image = new ImageGPLiver();
+            ImageGPLivery image = new ImageGPLivery();
             image.Link = link;
             repository.AddImageGPLiver(image);
             repository.SaveChanges();
@@ -121,9 +121,9 @@ namespace F1H.Classes
             return listLink;
         }
         
-        private ImageGPLiver SaveImageGPLiver(string link)
+        private ImageGPLivery SaveImageGPLiver(string link)
         {
-            ImageGPLiver imageGP = new ImageGPLiver();
+            ImageGPLivery imageGP = new ImageGPLivery();
             imageGP.Link = link;
             repository.AddImageGPLiver(imageGP);
             repository.SaveChanges();

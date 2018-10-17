@@ -15,18 +15,17 @@ namespace F1H.Models
         public IQueryable<TypeFail> TypeFails => context.TypeFails;
         public IQueryable<TypeFinish> TypeFinishes => context.TypeFinishes;
         public IQueryable<ImageGP> Images => context.Images;
-        public IQueryable<ImageGPConfiguration> ImagesGPConfigurations => context.ImagesGPConfigurations;
+        public IQueryable<ImageGPTrackConfiguration> ImagesGPConfigurations => context.ImagesGPConfigurations;
         public IQueryable<ImageGPFlag> ImagesGPFlags => context.ImagesGPFlags;
-        public IQueryable<ImageGPLiver> ImagesGPLivers => context.ImagesGPLivers;
+        public IQueryable<ImageGPLivery> ImagesGPLivers => context.ImagesGPLivers;
         public IQueryable<ImageGPRacers> ImagesGPRacers => context.ImagesGPRacers;
         public IQueryable<Season> Seasons => context.Seasons;
         public IQueryable<Country> Country => context.Country;
         public IQueryable<Manufacturer> Manufacturers => context.Manufacturers;
-        public IQueryable<TrackСonfiguration> GetTrackСonfigurations => context.GetTrackСonfigurations;
+        public IQueryable<TrackСonfiguration> TrackСonfigurations => context.TrackСonfigurations;
         public IQueryable<Track> Tracks => context.Tracks;
         public IQueryable<Team> Teams => context.Teams;
         public IQueryable<Chassi> Chassis => context.Chassis;
-        public IQueryable<DescriptionResult> DescriptionResults => context.DescriptionResults;
         public IQueryable<DNQ> DNQs => context.DNQs;
         public IQueryable<Engine> Engines => context.Engines;
         public IQueryable<Fail> Fails => context.Fails;
@@ -66,7 +65,7 @@ namespace F1H.Models
         {
             context.Add(imageGP);
         }
-        public void AddImageGPConfiguration(ImageGPConfiguration imageGPConfiguration)
+        public void AddImageGPConfiguration(ImageGPTrackConfiguration imageGPConfiguration)
         {
             context.Add(imageGPConfiguration);
         }
@@ -74,7 +73,7 @@ namespace F1H.Models
         {
             context.Add(imageGpFlag);
         }
-        public void AddImageGPLiver(ImageGPLiver imageGpLiver)
+        public void AddImageGPLiver(ImageGPLivery imageGpLiver)
         {
             context.Add(imageGpLiver);
         }
@@ -109,10 +108,6 @@ namespace F1H.Models
         public void AddChassi(Chassi chassi)
         {
             context.Add(chassi);
-        }
-        public void AddDescriptionResult(DescriptionResult descriptionResult)
-        {
-            context.Add(descriptionResult);
         }
         public void AddDNQ(DNQ dnq)
         {

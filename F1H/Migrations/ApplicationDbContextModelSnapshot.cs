@@ -24,11 +24,9 @@ namespace F1H.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("IdImageGPLivery");
+
                     b.Property<int>("IdImageGp");
-
-                    b.Property<int?>("IdImageGpChassi");
-
-                    b.Property<int>("IdImagesGpChassi");
 
                     b.Property<int>("IdManufacturer");
 
@@ -37,9 +35,9 @@ namespace F1H.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdImageGp");
+                    b.HasIndex("IdImageGPLivery");
 
-                    b.HasIndex("IdImageGpChassi");
+                    b.HasIndex("IdImageGp");
 
                     b.HasIndex("IdManufacturer");
 
@@ -64,23 +62,6 @@ namespace F1H.Migrations
                     b.HasIndex("IdImageGpFlag");
 
                     b.ToTable("Country");
-                });
-
-            modelBuilder.Entity("F1H.Models.DescriptionResult", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("IdGpResult");
-
-                    b.Property<string>("TextData")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdGpResult");
-
-                    b.ToTable("DescriptionResults");
                 });
 
             modelBuilder.Entity("F1H.Models.DNQ", b =>
@@ -204,17 +185,11 @@ namespace F1H.Migrations
 
                     b.Property<float>("AverageSpeed");
 
-                    b.Property<string>("Description")
-                        .IsRequired();
-
                     b.Property<int>("IdParticipant");
 
                     b.Property<int>("IdTypeFinish");
 
                     b.Property<int>("Lap");
-
-                    b.Property<string>("Num")
-                        .IsRequired();
 
                     b.Property<int>("Position");
 
@@ -248,19 +223,6 @@ namespace F1H.Migrations
                     b.ToTable("Images");
                 });
 
-            modelBuilder.Entity("F1H.Models.ImageGPConfiguration", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Link")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ImagesGPConfigurations");
-                });
-
             modelBuilder.Entity("F1H.Models.ImageGPFlag", b =>
                 {
                     b.Property<int>("Id")
@@ -274,7 +236,7 @@ namespace F1H.Migrations
                     b.ToTable("ImagesGPFlags");
                 });
 
-            modelBuilder.Entity("F1H.Models.ImageGPLiver", b =>
+            modelBuilder.Entity("F1H.Models.ImageGPLivery", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -298,6 +260,19 @@ namespace F1H.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ImagesGPRacers");
+                });
+
+            modelBuilder.Entity("F1H.Models.ImageGPTrackConfiguration", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Link")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ImagesGPConfigurations");
                 });
 
             modelBuilder.Entity("F1H.Models.LeaderLap", b =>
@@ -400,9 +375,6 @@ namespace F1H.Migrations
                     b.Property<float>("AverageSpeed");
 
                     b.Property<int>("IdParticipant");
-
-                    b.Property<string>("Num")
-                        .IsRequired();
 
                     b.Property<int>("Position");
 
@@ -514,25 +486,6 @@ namespace F1H.Migrations
                     b.ToTable("Teams");
                 });
 
-            modelBuilder.Entity("F1H.Models.TeamName", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FullName")
-                        .IsRequired();
-
-                    b.Property<int>("IdTeam");
-
-                    b.Property<DateTime>("Time");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdTeam");
-
-                    b.ToTable("TeamNames");
-                });
-
             modelBuilder.Entity("F1H.Models.Track", b =>
                 {
                     b.Property<int>("Id")
@@ -572,6 +525,9 @@ namespace F1H.Migrations
 
                     b.Property<int>("Length");
 
+                    b.Property<string>("Name")
+                        .IsRequired();
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdImageGp");
@@ -582,7 +538,7 @@ namespace F1H.Migrations
 
                     b.HasIndex("IdTrack");
 
-                    b.ToTable("GetTrackСonfigurations");
+                    b.ToTable("TrackСonfigurations");
                 });
 
             modelBuilder.Entity("F1H.Models.TypeCalculate", b =>
@@ -669,14 +625,15 @@ namespace F1H.Migrations
 
             modelBuilder.Entity("F1H.Models.Chassi", b =>
                 {
+                    b.HasOne("F1H.Models.ImageGPLivery", "ImageLiver")
+                        .WithMany()
+                        .HasForeignKey("IdImageGPLivery")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("F1H.Models.ImageGP", "Image")
                         .WithMany()
                         .HasForeignKey("IdImageGp")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("F1H.Models.ImageGPLiver", "ImageLiver")
-                        .WithMany()
-                        .HasForeignKey("IdImageGpChassi");
 
                     b.HasOne("F1H.Models.Manufacturer", "Manufacturer")
                         .WithMany()
@@ -689,14 +646,6 @@ namespace F1H.Migrations
                     b.HasOne("F1H.Models.ImageGPFlag", "Image")
                         .WithMany()
                         .HasForeignKey("IdImageGpFlag")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("F1H.Models.DescriptionResult", b =>
-                {
-                    b.HasOne("F1H.Models.GPResult", "Result")
-                        .WithMany()
-                        .HasForeignKey("IdGpResult")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
@@ -895,14 +844,6 @@ namespace F1H.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("F1H.Models.TeamName", b =>
-                {
-                    b.HasOne("F1H.Models.Team", "Team")
-                        .WithMany()
-                        .HasForeignKey("IdTeam")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
             modelBuilder.Entity("F1H.Models.Track", b =>
                 {
                     b.HasOne("F1H.Models.Country", "Countr")
@@ -923,7 +864,7 @@ namespace F1H.Migrations
                         .HasForeignKey("IdImageGp")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("F1H.Models.ImageGPConfiguration", "ImagesGpConfiguratione")
+                    b.HasOne("F1H.Models.ImageGPTrackConfiguration", "ImagesGpConfiguratione")
                         .WithMany()
                         .HasForeignKey("IdImagesGpConfiguration")
                         .OnDelete(DeleteBehavior.Restrict);

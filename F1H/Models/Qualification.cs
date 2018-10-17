@@ -10,8 +10,6 @@ namespace F1H.Models
         [Required]
         public int IdParticipant { get; set; }
         [Required]
-        public string Num { get; set; }
-        [Required]
         public int Position { get; set; }
         [Required]
         public string Time { get; set; }

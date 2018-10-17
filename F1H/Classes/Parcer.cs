@@ -83,12 +83,12 @@ namespace F1H.Classes
                 Size = 0
             };
             repository.AddImageGP(imageGP);
-            ImageGPConfiguration imageGpConfiguration = new ImageGPConfiguration
+            ImageGPTrackConfiguration imageGpConfiguration = new ImageGPTrackConfiguration
             {
                 Link = ""
             };
             repository.AddImageGPConfiguration(imageGpConfiguration);
-            ImageGPLiver lmGpLiver = new ImageGPLiver
+            ImageGPLivery lmGpLiver = new ImageGPLivery
             {
                 Link = ""
             };

@@ -9,18 +9,17 @@ namespace F1H.Models
         IQueryable<TypeFail> TypeFails { get; }
         IQueryable<TypeFinish> TypeFinishes { get; }
         IQueryable<ImageGP> Images { get; }
-        IQueryable<ImageGPConfiguration> ImagesGPConfigurations { get; }
+        IQueryable<ImageGPTrackConfiguration> ImagesGPConfigurations { get; }
         IQueryable<ImageGPFlag> ImagesGPFlags { get; }
-        IQueryable<ImageGPLiver> ImagesGPLivers { get; }
+        IQueryable<ImageGPLivery> ImagesGPLivers { get; }
         IQueryable<ImageGPRacers> ImagesGPRacers { get; }
         IQueryable<Season> Seasons { get; }
         IQueryable<Country> Country { get; }
         IQueryable<Manufacturer> Manufacturers { get; }
-        IQueryable<TrackСonfiguration> GetTrackСonfigurations { get; }
+        IQueryable<TrackСonfiguration> TrackСonfigurations { get; }
         IQueryable<Track> Tracks { get; }
         IQueryable<Team> Teams { get; }
         IQueryable<Chassi> Chassis { get; }
-        IQueryable<DescriptionResult> DescriptionResults { get; }
         IQueryable<DNQ> DNQs { get; }
         IQueryable<Engine> Engines { get; }
         IQueryable<Fail> Fails { get; }
@@ -40,9 +39,9 @@ namespace F1H.Models
         void AddTypeTypeFail(TypeFail typeFail);
         void AddTypeTypeFinish(TypeFinish typeFinish);
         void AddImageGP(ImageGP imageGP);
-        void AddImageGPConfiguration(ImageGPConfiguration imageGPConfiguration);
+        void AddImageGPConfiguration(ImageGPTrackConfiguration imageGPConfiguration);
         void AddImageGPFlag(ImageGPFlag imageGpFlag);
-        void AddImageGPLiver(ImageGPLiver imageGpLiver);
+        void AddImageGPLiver(ImageGPLivery imageGpLiver);
         void AddImageGPRacers(ImageGPRacers imageGpRacers);
         void AddSeason(Season season);
         void AddCountry(Country country);
@@ -51,7 +50,6 @@ namespace F1H.Models
         void AddTrack(Track track);
         void AddTeam(Team team);
         void AddChassi(Chassi chassi);
-        void AddDescriptionResult(DescriptionResult descriptionResult);
         void AddDNQ(DNQ dnq);
         void AddEngine(Engine engine);
         void AddFail(Fail fail);

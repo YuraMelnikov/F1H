@@ -10,8 +10,6 @@ namespace F1H.Models
         [Required]
         public int IdParticipant { get; set; }
         [Required]
-        public string Num { get; set; }
-        [Required]
         public int Position { get; set; }
         [Required]
         public string Time { get; set; }
@@ -21,8 +19,6 @@ namespace F1H.Models
         public int IdTypeFinish { get; set; }
         [Required]
         public int Lap { get; set; }
-        [Required]
-        public string Description { get; set; }
 
         [ForeignKey("IdParticipant")]
         public  Participant Participant { get; set; }

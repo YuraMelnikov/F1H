@@ -27,6 +27,6 @@ namespace F1H.Models
         [ForeignKey("IdSeason")]
         public  Season Season { get; set; }
         [ForeignKey("IdImagesGpConfiguration")]
-        public  ImageGPConfiguration ImagesGpConfiguratione { get; set; }
+        public  ImageGPTrackConfiguration ImagesGpConfiguratione { get; set; }
     }
 }
