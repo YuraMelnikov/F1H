@@ -87,7 +87,16 @@ namespace F1H.Classes
                 {
                     trackСonfiguration.IdSeason = repository.Seasons.First(d => d.Year == 2018).Id;
                 }
-                trackСonfiguration.Name = GetName(collectionConf[i].ChildNodes.First().ChildNodes.First().Attributes[4].Value);
+
+                try
+                {
+                    trackСonfiguration.Name = GetName(collectionConf[i].ChildNodes.First().ChildNodes.First().Attributes[4].Value);
+                }
+                catch (Exception e)
+                {
+                    trackСonfiguration.Name = "NA";
+                }
+
                 repository.AddTrackСonfiguration(trackСonfiguration);
                 repository.SaveChanges();
             }

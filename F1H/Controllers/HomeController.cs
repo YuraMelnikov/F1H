@@ -11,20 +11,20 @@ namespace F1H.Controllers
 
         public IActionResult Index()
         {
-            Parcer parcer = new Parcer(repository);
-            parcer.CrateDefaultData();
-            ParcerCountry parcerCountry = new ParcerCountry(repository);
-            parcerCountry.GetCountry();
-            ParserManufChassi parserManufChassi = new ParserManufChassi(repository);
-            parserManufChassi.SaveData();
-            ParcerEngine parcerEngine = new ParcerEngine(repository);
-            parcerEngine.SaveData();
-            ParcerRacers parcerRacers = new ParcerRacers(repository);
-            parcerRacers.SaveData();
-            ParserTyre parserTyre = new ParserTyre(repository);
-            parserTyre.CreateTyre();
-            ParserTracks parserTracks = new ParserTracks(repository);
-            parserTracks.GetTracks();
+            //Parcer parcer = new Parcer(repository);
+            //parcer.CrateDefaultData();
+            //ParcerCountry parcerCountry = new ParcerCountry(repository);
+            //parcerCountry.GetCountry();
+            //ParserManufChassi parserManufChassi = new ParserManufChassi(repository);
+            //parserManufChassi.SaveData();
+            //ParcerEngine parcerEngine = new ParcerEngine(repository);
+            //parcerEngine.SaveData();
+            //ParcerRacers parcerRacers = new ParcerRacers(repository);
+            //parcerRacers.SaveData();
+            //ParserTyre parserTyre = new ParserTyre(repository);
+            //parserTyre.CreateTyre();
+            //ParserTracks parserTracks = new ParserTracks(repository);
+            //parserTracks.GetTracks();
             return View();
         }
 
