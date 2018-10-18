@@ -64,6 +64,9 @@ namespace F1H.Models
         void AddStartPositionType(StartPositionType startPositionType);
         void AddTyre(Tyre tyre);
 
+        void RemoveChassi(Chassi chassi);
+        void RemoveEngine(Engine engine);
+
         void SaveChanges();
     }
 }

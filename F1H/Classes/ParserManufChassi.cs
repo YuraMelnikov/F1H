@@ -42,8 +42,7 @@ namespace F1H.Classes
                 {
 
                 }
-                ImageGP imageGP = new ImageGP();
-                imageGP = SaveImage(folderImageManuf + GetScrDataNode(XPathMImage).Replace("img/cha/small/", ""));
+                ImageGP imageGP = SaveImage(folderImageManuf + GetScrDataNode(XPathMImage).Replace("img/cha/small/", "").Replace("wwwroot", ""));
                 string mName = GetTextDataNode(xPathMName);
                 Manufacturer manufacturer = CreateManufacturer(mName, imageGP.Id);
                 List<ChassiLoad> listChassis = GetChassiLoads(mName, manufacturer.Id);
@@ -56,7 +55,7 @@ namespace F1H.Classes
             var collectionNames = GodLikeHTML.DocumentNode.SelectNodes(XPathCName).Where(d => d.InnerHtml != d.InnerText);
             foreach (var DATA in collectionNames)
             {
-                if (listChassis.Where(d => d.Name == DATA.InnerText).Count() == 0)
+                if (listChassis.All(d => d.Name != DATA.InnerText.Replace(mName + " ", "")))
                 {
                     string linkImage = "";
                     int idImageLiver = firstIdImagesLivery;
@@ -71,14 +70,17 @@ namespace F1H.Classes
                     if(linkImage != "")
                     {
                         SaveFileToServer(linkImage, FolderImageLivery);
-                        ImageGPLivery image = SaveimageLiver(FolderImageLivery + linkImage.Replace("img/cha/mod/", ""));
+                        ImageGPLivery image = SaveimageLiver(FolderImageLivery + linkImage.Replace("img/cha/mod/", "").Replace("wwwroot", ""));
                         idImageLiver = image.Id;
                     }
-                    Chassi chassi = new Chassi();
-                    chassi.IdManufacturer = idM;
-                    chassi.Name = DATA.InnerText.Replace(mName + " ", "");
-                    chassi.IdImageGp = firstIdImages;
-                    chassi.IdImageGPLivery = idImageLiver;
+
+                    Chassi chassi = new Chassi
+                    {
+                        IdManufacturer = idM,
+                        Name = DATA.InnerText.Replace(mName + " ", ""),
+                        IdImageGp = firstIdImages,
+                        IdImageGPLivery = idImageLiver
+                    };
                     repository.AddChassi(chassi);
                     repository.SaveChanges();
                 }
@@ -123,11 +125,10 @@ namespace F1H.Classes
         
         private ImageGPLivery SaveImageGPLiver(string link)
         {
-            ImageGPLivery imageGP = new ImageGPLivery();
-            imageGP.Link = link;
-            repository.AddImageGPLiver(imageGP);
+            ImageGPLivery imageGp = new ImageGPLivery {Link = link};
+            repository.AddImageGPLiver(imageGp);
             repository.SaveChanges();
-            return imageGP;
+            return imageGp;
         }
     }
 }

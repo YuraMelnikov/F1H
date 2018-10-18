@@ -43,7 +43,7 @@ namespace F1H.Classes
             ImageGP imageGP = new ImageGP();
             imageGP.Description = "";
             imageGP.Size = 0;
-            imageGP.Link = link;
+            imageGP.Link = link.Replace("wwwroot", "");
             repository.AddImageGP(imageGP);
             repository.SaveChanges();
             return imageGP;

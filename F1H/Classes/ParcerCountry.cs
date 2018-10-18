@@ -49,7 +49,7 @@ namespace F1H.Classes
                     string img = GetScrDataNode(xPathScrFlag);
                     SaveFileToServer(img, folderFlag);
                     ImageGPFlag imageGPFlag = new ImageGPFlag();
-                    imageGPFlag.Link = folderFlag + Path.GetFileName(img);
+                    imageGPFlag.Link = folderFlag.Replace("wwwroot", "") + Path.GetFileName(img);
                     repository.AddImageGPFlag(imageGPFlag);
                     repository.SaveChanges();
                     listCountry.Add(new CountryLoad(rusNameCountry, imageGPFlag.Id));

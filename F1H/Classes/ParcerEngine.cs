@@ -18,9 +18,9 @@ namespace F1H.Classes
         public override void SaveData()
         {
             List<string> linksList = GetListLink();
-            foreach (var DATA in linksList)
+            foreach (var data in linksList)
             {
-                GodLikeHTML.Load(GodLikeClient.OpenRead(DATA), Encoding);
+                GodLikeHTML.Load(GodLikeClient.OpenRead(data), Encoding);
                 string mName = GetTextDataNode(xPathMName);
                 Manufacturer manufacturer = CreateManufacturer(mName, firstIdImages);
                 List<ChassiLoad> listChassis = GetChassiLoads(mName, manufacturer.Id);
@@ -32,18 +32,20 @@ namespace F1H.Classes
             List<ChassiLoad> listChassis = new List<ChassiLoad>();
             
             var collectionNames = GodLikeHTML.DocumentNode.SelectNodes("//td[@class='" + XPathCName + "']");
-            foreach (var DATA in collectionNames)
+            foreach (var data in collectionNames)
             {
-                if(DATA.XPath.Substring(DATA.XPath.Length - 2, 1) != "2")
+                if(data.XPath.Substring(data.XPath.Length - 2, 1) != "2")
                 {
                     continue;
                 }
-                if (listChassis.Where(d => d.Name == DATA.InnerText).Count() == 0)
+                if (listChassis.All(d => d.Name != data.InnerText.Replace(mName + " ", "")))
                 {
-                    Engine engine = new Engine();
-                    engine.IdManufacturer = idM;
-                    engine.Name = DATA.InnerText.Replace(mName + " ", "");
-                    engine.IdImageGp = firstIdImages;
+                    Engine engine = new Engine
+                    {
+                        IdManufacturer = idM,
+                        Name = data.InnerText.Replace(mName + " ", ""),
+                        IdImageGp = firstIdImages
+                    };
                     repository.AddEngine(engine);
                     repository.SaveChanges();
                 }

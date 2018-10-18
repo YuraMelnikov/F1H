@@ -162,6 +162,13 @@ namespace F1H.Models
             context.Add(tyre);
         }
 
-
+        public void RemoveChassi(Chassi chassi)
+        {
+            context.Remove(chassi);
+        }
+        public void RemoveEngine(Engine engine)
+        {
+            context.Remove(engine);
+        }
     }
 }

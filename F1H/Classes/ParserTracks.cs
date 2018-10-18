@@ -109,7 +109,10 @@ namespace F1H.Classes
             {
                 GodLikeClient.DownloadFile(startPagesSite + scrFile, Path.Combine(folderUpload, Path.GetFileName(scrFile)));
                 ImageGPTrackConfiguration imageGpConfiguration = new ImageGPTrackConfiguration();
-                imageGpConfiguration.Link = FolderTrackConf + scrFile.Replace("img/cir/small/", "");
+
+
+
+                imageGpConfiguration.Link = FolderTrackConf + scrFile.Replace("img/cir/small/", "").Replace("wwwroot", "");
                 repository.AddImageGPConfiguration(imageGpConfiguration);
                 repository.SaveChanges();
                 return imageGpConfiguration.Id;

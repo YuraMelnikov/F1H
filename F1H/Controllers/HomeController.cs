@@ -25,6 +25,8 @@ namespace F1H.Controllers
             //parserTyre.CreateTyre();
             //ParserTracks parserTracks = new ParserTracks(repository);
             //parserTracks.GetTracks();
+            //ParcerRemove parcerRemove = new ParcerRemove(repository);
+            //parcerRemove.RemoveDublicate();
             return View();
         }
 

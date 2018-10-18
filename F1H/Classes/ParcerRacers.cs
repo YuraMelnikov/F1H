@@ -37,7 +37,7 @@ namespace F1H.Classes
                 try
                 {
                     SaveFileToServer(GetScrDataNode(XPathMImage), FolderImageLivery);
-                    ImageGPRacers imageGP = SaveImageRacers(FolderImageLivery + GetScrDataNode(XPathMImage).Replace("img/drv/", ""));
+                    ImageGPRacers imageGP = SaveImageRacers(FolderImageLivery + GetScrDataNode(XPathMImage).Replace("img/drv/", "").Replace("wwwroot", ""));
                     racer.IndexPhoto = imageGP.Id;
                 }
                 catch
