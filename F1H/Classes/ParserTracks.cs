@@ -92,7 +92,7 @@ namespace F1H.Classes
                 {
                     trackСonfiguration.Name = GetName(collectionConf[i].ChildNodes.First().ChildNodes.First().Attributes[4].Value);
                 }
-                catch (Exception e)
+                catch
                 {
                     trackСonfiguration.Name = "NA";
                 }
@@ -109,9 +109,6 @@ namespace F1H.Classes
             {
                 GodLikeClient.DownloadFile(startPagesSite + scrFile, Path.Combine(folderUpload, Path.GetFileName(scrFile)));
                 ImageGPTrackConfiguration imageGpConfiguration = new ImageGPTrackConfiguration();
-
-
-
                 imageGpConfiguration.Link = FolderTrackConf + scrFile.Replace("img/cir/small/", "").Replace("wwwroot", "");
                 repository.AddImageGPConfiguration(imageGpConfiguration);
                 repository.SaveChanges();
@@ -121,7 +118,6 @@ namespace F1H.Classes
             {
                 return 1;
             }
-
         }
 
         private string GetName(string name)

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<F1H.Models.Country>
+@{
+    ViewData["Title"] = "FlagCountry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table>
+    <thead>
+        <tr>Id</tr>
+        <tr>NameEn</tr>
+        <tr>NameRus</tr>
+        <tr>idImage</tr>
+        <tr>linkImage</tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.NameEn</td>
+            <td>@item.NameRus</td>
+            <td>@item.IdImageGpFlag</td>
+            <td>@item.Image.Link</td>
+        </tr>
+    }
+    </tbody>
+</table>

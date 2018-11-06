@@ -29,7 +29,5 @@ namespace F1H.Controllers
             //parcerRemove.RemoveDublicate();
             return View();
         }
-
-
     }
 }

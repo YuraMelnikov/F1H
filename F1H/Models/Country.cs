@@ -13,7 +13,6 @@ namespace F1H.Models
         public string NameRus { get; set; }
         [Required]
         public int IdImageGpFlag { get; set; }
-
         [ForeignKey("IdImageGpFlag")]
         public  ImageGPFlag Image { get; set; }
     }
