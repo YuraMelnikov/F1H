@@ -22,7 +22,6 @@ namespace F1H
             //Connection for PostgreSQL
             var connection = @"Host=localhost;Port=5432;Database=F1H;Username=F1HAdmin;Password=633336633336";
             services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connection));
-
             services.AddTransient<IF1HRepository, EFF1HRepository>();
             services.AddMvc();
         }
